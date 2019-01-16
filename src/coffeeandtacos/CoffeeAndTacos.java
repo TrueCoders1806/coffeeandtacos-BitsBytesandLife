@@ -23,11 +23,6 @@ public class CoffeeAndTacos {
             logger.logSevere("Cannot find file path", e);
         }  
         
-        var LocA = new GeoCoordinate(34.073638,-84.677017);
-        var LocB = new GeoCoordinate(34.035985,-84.683302);
-        
-        
-        System.out.println(String.valueOf(LocA.getDistanceTo(LocB)));
         // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
         // HINT:  You'll need two nested forloops
         
