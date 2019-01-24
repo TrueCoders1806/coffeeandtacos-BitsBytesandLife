@@ -28,14 +28,56 @@ public class TacoParser {
         var tacoBellLocation = new Trackable();
         var tacoBellLocationPoint = new Point();
         
-        // grab the latitude from your array at index 0
-        // tacoBellLocationPoint.latitude = convert.ToDouble(cells[0]);
-        tacoBellLocationPoint.setLatitude(Double.parseDouble(cells[0]));
-        tacoBellLocationPoint.setLongitude(Double.parseDouble(cells[1]));
-        
+       //grab the latitude from your array at index 0
+       //validate the latitude if not log the error
+        try
+        {    
+           tacoBellLocationPoint.setLatitude(Double.parseDouble(cells[0]));
+        }
+        catch (Exception e)
+        {
+            logger.logWarning("Not a Number");
+            return null;
+        }
+        if (tacoBellLocationPoint.getLatitude() < -90 || tacoBellLocationPoint.getLatitude() > 90)
+        {
+            logger.logWarning("Not a Valid Latitude.");
+            return null;
+        }
+        // grab the longitude from your array at index 1
+        // validate the longitude if not log the error
+        try
+        {
+          tacoBellLocationPoint.setLongitude(Double.parseDouble(cells[1]));
+        }
+        catch (Exception e)
+        {
+           logger.logWarning("Not a Number");
+           return null;
+        }
+        if (tacoBellLocationPoint.getLongitude() < -180 || tacoBellLocationPoint.getLongitude() > 180)
+        {
+           logger.logWarning("Not a Valid Longitude");
+           return null;
+        }
+        // grab the name from your array at index 2
+        // validate the name if not log the error
         var name = cells[2].trim();
         
-        tacoBellLocation.setName(name);
+       
+        // if (name.length < 9 || name.Substring(0, 9) != "Taco Bell")
+        if (name.length() < 9)
+        {
+          logger.logWarning("Not a Valid location");
+          return null;
+        }
+        
+        if (!name.contains("Taco Bell"))
+        {
+          logger.logWarning("Not a Valid Taco Bell");
+          return null;
+        }
+        tacoBellLocation.setName(name.replace("... (Free trial * Add to Cart for a full POI info)", "").replace("/", "").trim());
         tacoBellLocation.setLocation(tacoBellLocationPoint);
        
             

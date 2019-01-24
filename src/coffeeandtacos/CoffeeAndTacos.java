@@ -50,9 +50,8 @@ public class CoffeeAndTacos {
                     }
                 }
                 logger.logInfo("File Parsed");
-                //Convert the longestDistance using the formula; meters / 1609.344
-                logger.logInfo("Starting Taco Bell: " + locA.getName() + "Ending Taco Bell:" + locB.getName() +  
-                               "%nDistance:" + distance / 1609.344 + "miles. And the MF tacos now parsed");
+                logger.logInfo("\nStarting Taco Bell: " + locA.getName() + "\nEnding Taco Bell:" + locB.getName() +  
+                               "\nDistance:" + distance + " miles.");
             }
     }  
 }
