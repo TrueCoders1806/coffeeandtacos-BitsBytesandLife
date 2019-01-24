@@ -26,5 +26,33 @@ public class CoffeeAndTacos {
         // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
         // HINT:  You'll need two nested forloops
         
+        Trackable locA = null;
+        Trackable locB = null;
+            //Trackable locA = null;
+            //Trackable locB = null;
+            double distance = 0;
+            
+            for (Trackable strartingTacoBellLocation : locations){
+                //var origin = locA.getLocation().getLatitude();
+                // Creating a new Coordinate with locations locA lat and long
+                //var origin = new GeoCoordinate(locations[i].Location.Latitude, locations[i].Location.Longitude);
+                var origin = new GeoCoordinate(strartingTacoBellLocation.getLocation().getLatitude(),
+                                               strartingTacoBellLocation.getLocation().getLongitude());
+                for (Trackable endindTacoBellLocation : locations){
+                    var destination = new GeoCoordinate(endindTacoBellLocation.getLocation().getLatitude(),
+                                               endindTacoBellLocation.getLocation().getLongitude());
+                    var currentDistance = origin.getDistanceTo(destination);
+                    if (currentDistance > distance)
+                    {
+                        distance = currentDistance;
+                        locA = strartingTacoBellLocation;
+                        locB = endindTacoBellLocation;
+                    }
+                }
+                logger.logInfo("File Parsed");
+                //Convert the longestDistance using the formula; meters / 1609.344
+                logger.logInfo("Starting Taco Bell: " + locA.getName() + "Ending Taco Bell:" + locB.getName() +  
+                               "%nDistance:" + distance / 1609.344 + "miles. And the MF tacos now parsed");
+            }
     }  
 }
