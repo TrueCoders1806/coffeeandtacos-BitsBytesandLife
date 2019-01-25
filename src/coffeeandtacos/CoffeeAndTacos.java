@@ -50,7 +50,7 @@ public class CoffeeAndTacos {
                     }
                 }
                 logger.logInfo("File Parsed");
-                logger.logInfo("\nStarting Taco Bell: " + locA.getName() + "\nEnding Taco Bell:" + locB.getName() +  
+                logger.logInfo("\nStarting Taco Bell:" + locA.getName() + "\nEnding Taco Bell:" + locB.getName() +  
                                "\nDistance:" + distance + " miles.");
             }
     }  

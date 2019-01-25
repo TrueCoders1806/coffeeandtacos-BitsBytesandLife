@@ -77,7 +77,7 @@ public class TacoParser {
           logger.logWarning("Not a Valid Taco Bell");
           return null;
         }
-        tacoBellLocation.setName(name.replace("... (Free trial * Add to Cart for a full POI info)", "").replace("/", "").trim());
+        tacoBellLocation.setName(name.replace("Taco Bell", "").replace("... (Free trial * Add to Cart for a full POI info)", "").replace("/", "").trim());
         tacoBellLocation.setLocation(tacoBellLocationPoint);
        
             
