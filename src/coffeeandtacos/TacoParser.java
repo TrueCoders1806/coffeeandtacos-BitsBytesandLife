@@ -7,7 +7,6 @@ public class TacoParser {
     
     public Trackable Parse(String line) {
         
-        logger.logInfo("Begin Parsing");
         if(line == null)
             {
                 logger.logWarning("Line was null");
@@ -18,7 +17,7 @@ public class TacoParser {
         
         // Do not fail if one record parsing fails, return null
         // If your array.Length is less than 3, something went wrong
-        if (cells.length < 3 || cells.length > 3)
+        if (cells.length > 3 ) 
         {
             // Log that and return null
             logger.logWarning("The length was the array less than 3");
@@ -36,7 +35,7 @@ public class TacoParser {
         }
         catch (Exception e)
         {
-            logger.logWarning("Not a Number");
+            logger.logWarning("Not a Number", e);
             return null;
         }
         if (tacoBellLocationPoint.getLatitude() < -90 || tacoBellLocationPoint.getLatitude() > 90)
@@ -52,7 +51,7 @@ public class TacoParser {
         }
         catch (Exception e)
         {
-           logger.logWarning("Not a Number");
+           logger.logWarning("Not a Number", e);
            return null;
         }
         if (tacoBellLocationPoint.getLongitude() < -180 || tacoBellLocationPoint.getLongitude() > 180)
@@ -82,6 +81,6 @@ public class TacoParser {
        
             
         // Do not fail if one record parsing fails, return null
-        return tacoBellLocation; //TODO Implement
+        return tacoBellLocation; 
     }
 }

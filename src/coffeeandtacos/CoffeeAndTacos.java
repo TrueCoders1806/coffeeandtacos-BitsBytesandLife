@@ -11,7 +11,7 @@ public class CoffeeAndTacos {
     public static void main(String[] args) {
           
         List<Trackable> locations = new ArrayList<>();
-        
+        logger.logInfo("Begin Parsing");
         var parser = new TacoParser();
         Scanner scanner;      
         try {
@@ -22,7 +22,7 @@ public class CoffeeAndTacos {
         } catch (Exception e) {
             logger.logSevere("Cannot find file path", e);
         }  
-        
+        logger.logInfo("File Parsed");
         // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
         // HINT:  You'll need two nested forloops
         
@@ -49,7 +49,7 @@ public class CoffeeAndTacos {
                         locB = endindTacoBellLocation;
                     }
                 }
-                logger.logInfo("File Parsed");
+                //logger.logInfo("File Parsed");
                 logger.logInfo("\nStarting Taco Bell:" + locA.getName() + "\nEnding Taco Bell:" + locB.getName() +  
                                "\nDistance:" + distance + " miles.");
             }
