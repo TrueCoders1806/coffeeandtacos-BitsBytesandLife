@@ -11,7 +11,7 @@ public class CoffeeAndTacos {
     public static void main(String[] args) {
           
         List<Trackable> locations = new ArrayList<>();
-        
+        logger.logInfo("Begin Parsing");
         var parser = new TacoParser();
         Scanner scanner;      
         try {
@@ -22,9 +22,31 @@ public class CoffeeAndTacos {
         } catch (Exception e) {
             logger.logSevere("Cannot find file path", e);
         }  
+        logger.logInfo("File Parsed");
         
-        // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
-        // HINT:  You'll need two nested forloops
+        Trackable locA = null;
+        Trackable locB = null;
         
+        double distance = 0;
+            
+        for (Trackable strartingTacoBellLocation : locations){
+            
+           
+            var origin = new GeoCoordinate(strartingTacoBellLocation.getLocation().getLatitude(),
+                                           strartingTacoBellLocation.getLocation().getLongitude());
+            for (Trackable endindTacoBellLocation : locations){
+                 var destination = new GeoCoordinate(endindTacoBellLocation.getLocation().getLatitude(),
+                                                     endindTacoBellLocation.getLocation().getLongitude());
+                 var currentDistance = origin.getDistanceTo(destination);
+                 if (currentDistance > distance){
+                     distance = currentDistance;
+                     locA = strartingTacoBellLocation;
+                     locB = endindTacoBellLocation;
+                    }
+                }
+            
+            logger.logInfo("\nStarting Taco Bell:" + locA.getName() + "\nEnding Taco Bell:" + locB.getName() +  
+                           "\nDistance:" + distance + " miles.");
+        }
     }  
 }
